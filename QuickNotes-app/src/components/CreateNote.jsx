@@ -30,7 +30,9 @@ function CreateNote() {
     setValue("");
   };
   const handleDelete = (index) => {
-    setNotes(notes.filter((note, i) => i != index));
+    if (confirm("Are you sure you want to delete this note?")) {
+      setNotes(notes.filter((note, i) => i != index));
+    }
   };
 
   return (
