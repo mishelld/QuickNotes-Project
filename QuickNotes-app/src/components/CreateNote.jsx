@@ -11,15 +11,17 @@ function CreateNote() {
 
   return (
     <>
-      <div className="create-note">
-        <textarea
-          placeholder="Your note..."
-          onChange={(e) => setValue(e.target.value)}
-        />
-        <button onClick={handleAdd}>Add</button>
-      </div>
+      <div className="notes-container">
+        <div className="create-note">
+          <textarea
+            placeholder="Your note..."
+            onChange={(e) => setValue(e.target.value)}
+          />
+          <button onClick={handleAdd}>Add</button>
+        </div>
 
-      <Notes notes={notes} />
+        <Notes notes={notes} />
+      </div>
     </>
   );
 }
