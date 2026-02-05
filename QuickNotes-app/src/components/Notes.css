@@ -12,3 +12,12 @@
   border-radius: 5px;
   padding: 20px;
 }
+
+.date {
+  font-size: 0.8rem;
+  color: rgb(152, 152, 152);
+}
+
+.text {
+  text-align: start;
+}
