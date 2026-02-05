@@ -29,6 +29,9 @@ function CreateNote() {
     setNotes([...notes, { text: value, date: getDate() }]);
     setValue("");
   };
+  const handleDelete = (index) => {
+    setNotes(notes.filter((note, i) => i != index));
+  };
 
   return (
     <>
@@ -38,10 +41,12 @@ function CreateNote() {
             placeholder="Your note..."
             onChange={(e) => setValue(e.target.value)}
           />
-          <button onClick={handleAdd}>Add</button>
+          <button className="add-btn" onClick={handleAdd}>
+            Add
+          </button>
         </div>
 
-        <Notes notes={notes} />
+        <Notes notes={notes} onDelete={handleDelete} />
       </div>
     </>
   );

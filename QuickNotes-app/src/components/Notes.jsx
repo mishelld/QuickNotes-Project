@@ -1,12 +1,15 @@
 import "./Notes.css";
-function Notes({ notes }) {
-  console.log(notes);
-
+function Notes({ notes, onDelete }) {
   return (
     <div className="notes">
       {notes.map((note, index) => (
         <div key={index} className="note">
-          <div className="date">{note.date}</div>
+          <header>
+            <div className="date">{note.date}</div>
+            <button className="dlt-btn" onClick={() => onDelete(index)}>
+              X
+            </button>
+          </header>
           <div className="text">{note.text}</div>
         </div>
       ))}
