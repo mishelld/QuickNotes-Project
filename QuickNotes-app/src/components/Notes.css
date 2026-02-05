@@ -24,6 +24,12 @@
   text-align: start;
 }
 
+.title {
+  text-align: start;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
 .notes .note .dlt-btn {
   font-size: 0.8rem;
 }

@@ -10,6 +10,7 @@ function Notes({ notes, onDelete }) {
               X
             </button>
           </header>
+          <div className="title">{note.title}</div>
           <div className="text">{note.text}</div>
         </div>
       ))}

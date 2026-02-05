@@ -2,7 +2,8 @@ import { useState } from "react";
 import "./CreateNote.css";
 import Notes from "./Notes";
 function CreateNote() {
-  const [value, setValue] = useState("");
+  const [text, setText] = useState("");
+  const [title, setTitle] = useState("");
   const [notes, setNotes] = useState([]);
   const monthNames = [
     "Jan",
@@ -26,7 +27,7 @@ function CreateNote() {
     return `${month} ${day}st ${hour}:${minutes}`;
   };
   const handleAdd = () => {
-    setNotes([...notes, { text: value, date: getDate() }]);
+    setNotes([...notes, { title: title, text: text, date: getDate() }]);
     setValue("");
   };
   const handleDelete = (index) => {
@@ -39,9 +40,14 @@ function CreateNote() {
     <>
       <div className="notes-container">
         <div className="create-note">
+          <input
+            className="title"
+            placeholder="Title"
+            onChange={(e) => setTitle(e.target.value)}
+          />
           <textarea
             placeholder="Your note..."
-            onChange={(e) => setValue(e.target.value)}
+            onChange={(e) => setText(e.target.value)}
           />
           <button className="add-btn" onClick={handleAdd}>
             Add
