@@ -1,17 +1,15 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import Input from './components/Input'
+import { useState } from "react";
+import reactLogo from "./assets/react.svg";
+import viteLogo from "/vite.svg";
+import "./App.css";
+import CreateNote from "./components/CreateNote";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-      <Input/>
+      <CreateNote />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
