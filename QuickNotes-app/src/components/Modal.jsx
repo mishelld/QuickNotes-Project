@@ -1,5 +1,10 @@
 import "./Modal.css";
-function Modal({ note, onClose }) {
+import { use, useState } from "react";
+
+function Modal({ note, onClose, onUpdate }) {
+  const [text, setText] = useState(note.text || "");
+  const [title, setTitle] = useState(note.title || "");
+
   return (
     <div className="modal-overlay">
       <div className="modal-note">
@@ -9,8 +14,26 @@ function Modal({ note, onClose }) {
             X
           </button>
         </header>
-        <div className="title">{note.title}</div>
-        <div className="text">{note.text}</div>
+        <input
+          value={title}
+          placeholder="Title"
+          onChange={(e) => setTitle(e.target.value)}
+        />
+        <textarea
+          value={text}
+          placeholder="Your note..."
+          onChange={(e) => setText(e.target.value)}
+        ></textarea>
+        <button
+          onClick={() =>
+            onUpdate(note, {
+              title: title,
+              text: text,
+            })
+          }
+        >
+          Update
+        </button>
       </div>
     </div>
   );

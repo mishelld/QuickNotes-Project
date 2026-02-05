@@ -8,6 +8,7 @@ function CreateNote() {
   const [notes, setNotes] = useState([]);
   const [selectedNote, setSelectedNote] = useState({});
   const [isOpen, setIsOpen] = useState(false);
+
   const monthNames = [
     "Jan",
     "Feb",
@@ -39,6 +40,21 @@ function CreateNote() {
       setNotes(notes.filter((note, i) => i !== index));
     }
   };
+  const handleUpdate = (prevNote, CurrNote) => {
+    setNotes(
+      notes.map((n) =>
+        n === prevNote
+          ? {
+              ...n,
+              title: CurrNote.title,
+              text: CurrNote.text,
+              date: getDate(),
+            }
+          : n,
+      ),
+    );
+    closeModal();
+  };
 
   const openModal = (index) => {
     setIsOpen(true);
@@ -69,7 +85,13 @@ function CreateNote() {
 
         <Notes notes={notes} onDelete={handleDelete} onNoteClick={openModal} />
 
-        {isOpen ? <Modal note={selectedNote} onClose={closeModal} /> : null}
+        {isOpen ? (
+          <Modal
+            note={selectedNote}
+            onClose={closeModal}
+            onUpdate={handleUpdate}
+          />
+        ) : null}
       </div>
     </>
   );
