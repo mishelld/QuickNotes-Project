@@ -1,9 +1,9 @@
 import "./Notes.css";
-function Notes({ notes, onDelete }) {
+function Notes({ notes, onDelete, onNoteClick }) {
   return (
     <div className="notes">
       {notes.map((note, index) => (
-        <div key={index} className="note">
+        <div key={index} className="note" onClick={() => onNoteClick(index)}>
           <header>
             <div className="date">{note.date}</div>
             <button className="dlt-btn" onClick={() => onDelete(index)}>

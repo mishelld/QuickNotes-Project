@@ -30,10 +30,10 @@
   font-weight: bold;
 }
 
-.notes .note .dlt-btn {
+.dlt-btn {
   font-size: 0.8rem;
 }
-.notes .note header {
+header {
   display: flex;
   align-items: center;
   gap: 10px;

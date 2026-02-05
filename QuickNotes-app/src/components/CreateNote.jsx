@@ -1,10 +1,13 @@
-import { useState } from "react";
+import { use, useState } from "react";
 import "./CreateNote.css";
 import Notes from "./Notes";
+import Modal from "./Modal";
 function CreateNote() {
   const [text, setText] = useState("");
   const [title, setTitle] = useState("");
   const [notes, setNotes] = useState([]);
+  const [selectedNote, setSelectedNote] = useState({});
+  const [isOpen, setIsOpen] = useState(false);
   const monthNames = [
     "Jan",
     "Feb",
@@ -28,12 +31,22 @@ function CreateNote() {
   };
   const handleAdd = () => {
     setNotes([...notes, { title: title, text: text, date: getDate() }]);
-    setValue("");
+    setText("");
+    setTitle("");
   };
   const handleDelete = (index) => {
     if (confirm("Are you sure you want to delete this note?")) {
-      setNotes(notes.filter((note, i) => i != index));
+      setNotes(notes.filter((note, i) => i !== index));
     }
+  };
+
+  const openModal = (index) => {
+    setIsOpen(true);
+    setSelectedNote(notes.find((note, i) => i === index));
+  };
+  const closeModal = () => {
+    setIsOpen(false);
+    setSelectedNote({});
   };
 
   return (
@@ -54,7 +67,9 @@ function CreateNote() {
           </button>
         </div>
 
-        <Notes notes={notes} onDelete={handleDelete} />
+        <Notes notes={notes} onDelete={handleDelete} onNoteClick={openModal} />
+
+        {isOpen ? <Modal note={selectedNote} onClose={closeModal} /> : null}
       </div>
     </>
   );
