@@ -6,9 +6,26 @@ function CreateNote() {
   const [text, setText] = useState("");
   const [title, setTitle] = useState("");
   const [notes, setNotes] = useState([]);
+  const [filterednotes, setFilteredNotes] = useState([]);
   const [selectedNote, setSelectedNote] = useState({});
   const [isOpen, setIsOpen] = useState(false);
   const [category, setCategory] = useState("");
+  const [search, setSearch] = useState("");
+
+  {
+    useEffect(() => {
+      if (search === "") {
+        setFilteredNotes(notes);
+      } else {
+        const new_notes = notes.filter(
+          (n) =>
+            n.title.toLowerCase().includes(search.toLowerCase()) ||
+            n.text.toLowerCase().includes(search.toLowerCase()),
+        );
+        setFilteredNotes(new_notes);
+      }
+    }, [search, notes]);
+  }
 
   useEffect(() => {
     const localNotes = localStorage.getItem("notes");
@@ -88,6 +105,13 @@ function CreateNote() {
   return (
     <>
       <div className="notes-container">
+        <input
+          value={search}
+          onChange={(e) => {
+            setSearch(e.target.value);
+          }}
+          placeholder="search notes..."
+        ></input>
         <div className="create-note">
           <input
             className="title"
@@ -108,7 +132,11 @@ function CreateNote() {
           </button>
         </div>
 
-        <Notes notes={notes} onDelete={handleDelete} onNoteClick={openModal} />
+        <Notes
+          notes={filterednotes}
+          onDelete={handleDelete}
+          onNoteClick={openModal}
+        />
 
         {isOpen ? (
           <Modal
