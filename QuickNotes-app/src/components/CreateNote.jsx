@@ -8,6 +8,7 @@ function CreateNote() {
   const [notes, setNotes] = useState([]);
   const [selectedNote, setSelectedNote] = useState({});
   const [isOpen, setIsOpen] = useState(false);
+  const [category, setCategory] = useState("");
 
   useEffect(() => {
     const localNotes = localStorage.getItem("notes");
@@ -42,7 +43,10 @@ function CreateNote() {
     return `${month} ${day}st ${hour}:${minutes}`;
   };
   const handleAdd = () => {
-    setNotes([...notes, { title: title, text: text, date: getDate() }]);
+    setNotes([
+      ...notes,
+      { title: title, text: text, category: category, date: getDate() },
+    ]);
     setText("");
     setTitle("");
   };
@@ -59,6 +63,7 @@ function CreateNote() {
               ...n,
               title: CurrNote.title,
               text: CurrNote.text,
+              category: CurrNote.category,
               date: getDate(),
             }
           : n,
@@ -76,6 +81,10 @@ function CreateNote() {
     setSelectedNote({});
   };
 
+  const handleCategory = (e) => {
+    setCategory(e.target.value);
+  };
+
   return (
     <>
       <div className="notes-container">
@@ -89,6 +98,11 @@ function CreateNote() {
             placeholder="Your note..."
             onChange={(e) => setText(e.target.value)}
           />
+          <select value={category} onChange={handleCategory}>
+            <option value="">-- Select --</option>
+            <option value="personal">Personal</option>
+            <option value="work">Work</option>
+          </select>
           <button className="add-btn" onClick={handleAdd}>
             Add
           </button>

@@ -3,7 +3,11 @@ function Notes({ notes, onDelete, onNoteClick }) {
   return (
     <div className="notes">
       {notes.map((note, index) => (
-        <div key={index} className="note" onClick={() => onNoteClick(index)}>
+        <div
+          key={index}
+          className={`note ${note.category}`}
+          onClick={() => onNoteClick(index)}
+        >
           <header>
             <div className="date">{note.date}</div>
             <button className="dlt-btn" onClick={() => onDelete(index)}>
