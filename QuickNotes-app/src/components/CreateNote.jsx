@@ -1,4 +1,4 @@
-import { use, useState } from "react";
+import { use, useEffect, useState } from "react";
 import "./CreateNote.css";
 import Notes from "./Notes";
 import Modal from "./Modal";
@@ -8,6 +8,17 @@ function CreateNote() {
   const [notes, setNotes] = useState([]);
   const [selectedNote, setSelectedNote] = useState({});
   const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    const localNotes = localStorage.getItem("notes");
+    if (localNotes) {
+      setNotes(JSON.parse(localNotes));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("notes", JSON.stringify(notes));
+  }, [notes]);
 
   const monthNames = [
     "Jan",
