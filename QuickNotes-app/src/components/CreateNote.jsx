@@ -102,35 +102,40 @@ function CreateNote() {
   return (
     <>
       <div className="notes-container">
-        <input
-          value={search}
-          onChange={(e) => {
-            setSearch(e.target.value);
-          }}
-          placeholder="search notes..."
-        ></input>
-        <CategoryButtons
-          selectedCategory={selectedCategory}
-          setSelectedCategory={setSelectedCategory}
-        />
-        <div className="create-note">
-          <input
-            className="title"
-            placeholder="Title"
-            onChange={(e) => setTitle(e.target.value)}
-          />
-          <textarea
-            placeholder="Your note..."
-            onChange={(e) => setText(e.target.value)}
-          />
-          <select value={category} onChange={handleCategory}>
-            <option value="">-- Select --</option>
-            <option value="personal">Personal</option>
-            <option value="work">Work</option>
-          </select>
-          <button className="add-btn" onClick={handleAdd}>
-            Add
-          </button>
+        <div className="note-wrapper">
+          <header>
+            <input
+              value={search}
+              onChange={(e) => {
+                setSearch(e.target.value);
+              }}
+              placeholder="search notes..."
+            ></input>
+            <CategoryButtons
+              selectedCategory={selectedCategory}
+              setSelectedCategory={setSelectedCategory}
+            />
+          </header>
+
+          <div className="create-note">
+            <input
+              className="title"
+              placeholder="Title"
+              onChange={(e) => setTitle(e.target.value)}
+            />
+            <textarea
+              placeholder="Your note..."
+              onChange={(e) => setText(e.target.value)}
+            />
+            <select value={category} onChange={handleCategory}>
+              <option value="">-- Select --</option>
+              <option value="personal">Personal</option>
+              <option value="work">Work</option>
+            </select>
+            <button className="add-btn" onClick={handleAdd}>
+              Add
+            </button>
+          </div>
         </div>
 
         <Notes

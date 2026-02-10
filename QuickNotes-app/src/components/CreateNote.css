@@ -6,6 +6,20 @@ body {
   flex-direction: column;
   gap: 20px;
 }
+.notes-container input {
+  background-color: transparent;
+  border: none;
+  width: 100%;
+  padding: 10px;
+}
+.notes-container header {
+  display: flex;
+}
+.notes-container .note-wrapper {
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
 .create-note {
   display: flex;
   flex-direction: column;
