@@ -18,16 +18,18 @@ function Modal({ note, onClose, onUpdate }) {
             X
           </button>
         </header>
-        <NoteForm
-          title={title}
-          setTitle={setTitle}
-          text={text}
-          setText={setText}
-          category={category}
-          handleCategory={(e) => setCategory(e.target.value)}
-          handleSubmit={() => onUpdate(note, { title, text, category })}
-          submitLabel="Update"
-        />
+        <div className="modal-front">
+          <NoteForm
+            title={title}
+            setTitle={setTitle}
+            text={text}
+            setText={setText}
+            category={category}
+            handleCategory={(e) => setCategory(e.target.value)}
+            handleSubmit={() => onUpdate(note, { title, text, category })}
+            submitLabel="Update"
+          />
+        </div>
       </div>
     </div>
   );

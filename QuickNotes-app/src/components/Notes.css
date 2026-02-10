@@ -15,25 +15,25 @@
   padding: 20px;
 }
 
-.date {
+.note .date {
   font-size: 0.8rem;
   color: rgb(152, 152, 152);
 }
 
-.text {
+.note .text {
   text-align: start;
 }
 
-.title {
+.note .title {
   text-align: start;
   font-size: 1.2rem;
   font-weight: bold;
 }
 
-.dlt-btn {
+.note .dlt-btn {
   font-size: 0.8rem;
 }
-header {
+.note header {
   display: flex;
   align-items: center;
   gap: 10px;
