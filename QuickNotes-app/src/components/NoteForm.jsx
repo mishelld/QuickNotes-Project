@@ -1,4 +1,6 @@
 import "./NoteForm.css";
+import TextareaAutosize from "react-textarea-autosize";
+
 function NoteForm({
   title,
   setTitle,
@@ -18,10 +20,11 @@ function NoteForm({
           placeholder="Title"
           onChange={(e) => setTitle(e.target.value)}
         />
-        <textarea
+        <TextareaAutosize
           value={text}
           placeholder="Your note..."
           onChange={(e) => setText(e.target.value)}
+          minRows={10}
         />
         <select value={category} onChange={handleCategory}>
           <option value="">Select Category</option>
