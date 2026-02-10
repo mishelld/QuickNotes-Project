@@ -1,3 +1,4 @@
+import "./NoteForm.css";
 function NoteForm({
   title,
   setTitle,
@@ -27,7 +28,7 @@ function NoteForm({
           <option value="personal">Personal</option>
           <option value="work">Work</option>
         </select>
-        <button className="add-btn" onClick={handleSubmit}>
+        <button className="submit-btn" onClick={handleSubmit}>
           {submitLabel}
         </button>
       </div>

@@ -1,5 +1,6 @@
 import "./Modal.css";
 import NoteForm from "./NoteForm";
+import "./categories.css";
 
 import { use, useState } from "react";
 

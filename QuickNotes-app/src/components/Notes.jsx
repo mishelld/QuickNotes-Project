@@ -1,4 +1,6 @@
 import "./Notes.css";
+import "./categories.css";
+
 function Notes({ notes, onDelete, onNoteClick }) {
   return (
     <div className="notes">
