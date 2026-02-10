@@ -11,7 +11,10 @@ function Notes({ notes, onDelete, onNoteClick }) {
           onClick={() => onNoteClick(note)}
         >
           <header>
-            <div className="date">{note.date}</div>
+            <div className="date">
+              <p>Created: {note.createdDate}</p>
+              {note.updatedDate && <p>Updated: {note.updatedDate}</p>}
+            </div>
             <button
               className="dlt-btn"
               onClick={(e) => {

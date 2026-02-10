@@ -38,7 +38,13 @@ function CreateNote() {
   const handleAdd = () => {
     setNotes([
       ...notes,
-      { title: title, text: text, category: category, date: getDate() },
+      {
+        title: title,
+        text: text,
+        category: category,
+        createdDate: getDate(),
+        updatedDate: null,
+      },
     ]);
     setText("");
     setTitle("");
@@ -57,7 +63,8 @@ function CreateNote() {
               title: CurrNote.title,
               text: CurrNote.text,
               category: CurrNote.category,
-              date: getDate(),
+              createdDate: n.createdDate,
+              updatedDate: getDate(),
             }
           : n,
       ),
