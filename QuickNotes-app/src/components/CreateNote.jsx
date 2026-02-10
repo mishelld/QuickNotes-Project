@@ -6,9 +6,11 @@ import CategoryButtons from "./CategoryButtons";
 import NoteForm from "./NoteForm";
 
 function CreateNote() {
+  const localNotes = localStorage.getItem("notes");
+
   const [text, setText] = useState("");
   const [title, setTitle] = useState("");
-  const [notes, setNotes] = useState([]);
+  const [notes, setNotes] = useState(localNotes ? JSON.parse(localNotes) : []);
   const [filterednotes, setFilteredNotes] = useState([]);
   const [selectedNote, setSelectedNote] = useState({});
   const [isOpen, setIsOpen] = useState(false);
