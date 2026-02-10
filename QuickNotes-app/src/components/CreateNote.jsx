@@ -5,13 +5,15 @@ import Modal from "./Modal";
 import CategoryButtons from "./CategoryButtons";
 import NoteForm from "./NoteForm";
 import SearchBar from "./SearchBar";
+import { getDate } from "../utils/dateUtils";
 
 function CreateNote() {
-  const localNotes = localStorage.getItem("notes");
-
   const [text, setText] = useState("");
   const [title, setTitle] = useState("");
-  const [notes, setNotes] = useState(localNotes ? JSON.parse(localNotes) : []);
+  const [notes, setNotes] = useState(() => {
+    const localNotes = localStorage.getItem("notes");
+    return localNotes ? JSON.parse(localNotes) : [];
+  });
   const [filterednotes, setFilteredNotes] = useState([]);
   const [selectedNote, setSelectedNote] = useState({});
   const [isOpen, setIsOpen] = useState(false);
@@ -30,37 +32,9 @@ function CreateNote() {
   }, [search, notes, selectedCategory]);
 
   useEffect(() => {
-    const localNotes = localStorage.getItem("notes");
-    if (localNotes) {
-      setNotes(JSON.parse(localNotes));
-    }
-  }, []);
-
-  useEffect(() => {
     localStorage.setItem("notes", JSON.stringify(notes));
   }, [notes]);
 
-  const monthNames = [
-    "Jan",
-    "Feb",
-    "Mar",
-    "Apr",
-    "May",
-    "Jun",
-    "Jul",
-    "Aug",
-    "Sept",
-    "Oct",
-    "Nov",
-    "Dec",
-  ];
-  const getDate = () => {
-    const month = monthNames[new Date().getMonth()];
-    const day = new Date().getDate().toLocaleString();
-    const hour = new Date().getHours().toLocaleString().padStart(2, "0");
-    const minutes = new Date().getMinutes().toLocaleString().padStart(2, "0");
-    return `${month} ${day}st ${hour}:${minutes}`;
-  };
   const handleAdd = () => {
     setNotes([
       ...notes,
