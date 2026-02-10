@@ -8,7 +8,7 @@ function Notes({ notes, onDelete, onNoteClick }) {
         <div
           key={index}
           className={`note ${note.category}`}
-          onClick={() => onNoteClick(index)}
+          onClick={() => onNoteClick(note)}
         >
           <header>
             <div className="date">{note.date}</div>
@@ -16,7 +16,7 @@ function Notes({ notes, onDelete, onNoteClick }) {
               className="dlt-btn"
               onClick={(e) => {
                 e.stopPropagation();
-                onDelete(index);
+                onDelete(note);
               }}
             >
               X

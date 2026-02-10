@@ -43,9 +43,9 @@ function CreateNote() {
     setText("");
     setTitle("");
   };
-  const handleDelete = (index) => {
+  const handleDelete = (note) => {
     if (confirm("Are you sure you want to delete this note?")) {
-      setNotes(notes.filter((note, i) => i !== index));
+      setNotes(notes.filter((n) => n !== note));
     }
   };
   const handleUpdate = (prevNote, CurrNote) => {
@@ -65,9 +65,9 @@ function CreateNote() {
     closeModal();
   };
 
-  const openModal = (index) => {
+  const openModal = (note) => {
     setIsOpen(true);
-    setSelectedNote(notes.find((note, i) => i === index));
+    setSelectedNote(notes.find((n) => n === note));
   };
   const closeModal = () => {
     setIsOpen(false);
