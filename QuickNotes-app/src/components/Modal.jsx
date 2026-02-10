@@ -11,7 +11,7 @@ function Modal({ note, onClose, onUpdate }) {
 
   return (
     <div className="modal-overlay">
-      <div className={`modal-note ${category}`}>
+      <div className={`modal-note ${category || "default"}`}>
         <header>
           <div className="date">{note.date}</div>
           <button className="dlt-btn" onClick={onClose}>
