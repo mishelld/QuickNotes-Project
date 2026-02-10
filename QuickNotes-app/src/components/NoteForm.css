@@ -11,7 +11,9 @@
   width: 400px;
   margin: 0 auto;
 }
-
+.create-note input {
+  padding: 10px;
+}
 .create-note input,
 .create-note textarea,
 .create-note select {
