@@ -10,7 +10,13 @@ function Notes({ notes, onDelete, onNoteClick }) {
         >
           <header>
             <div className="date">{note.date}</div>
-            <button className="dlt-btn" onClick={() => onDelete(index)}>
+            <button
+              className="dlt-btn"
+              onClick={(e) => {
+                e.stopPropagation();
+                onDelete(index);
+              }}
+            >
               X
             </button>
           </header>
