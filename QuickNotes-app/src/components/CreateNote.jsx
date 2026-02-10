@@ -11,21 +11,17 @@ function CreateNote() {
   const [isOpen, setIsOpen] = useState(false);
   const [category, setCategory] = useState("");
   const [search, setSearch] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState(null);
 
-  {
-    useEffect(() => {
-      if (search === "") {
-        setFilteredNotes(notes);
-      } else {
-        const new_notes = notes.filter(
-          (n) =>
-            n.title.toLowerCase().includes(search.toLowerCase()) ||
-            n.text.toLowerCase().includes(search.toLowerCase()),
-        );
-        setFilteredNotes(new_notes);
-      }
-    }, [search, notes]);
-  }
+  useEffect(() => {
+    const new_notes = notes.filter(
+      (n) =>
+        (!selectedCategory || n.category === selectedCategory) &&
+        (n.title.toLowerCase().includes(search.toLowerCase()) ||
+          n.text.toLowerCase().includes(search.toLowerCase())),
+    );
+    setFilteredNotes(new_notes);
+  }, [search, notes, selectedCategory]);
 
   useEffect(() => {
     const localNotes = localStorage.getItem("notes");
@@ -112,6 +108,27 @@ function CreateNote() {
           }}
           placeholder="search notes..."
         ></input>
+        <button
+          onClick={() => {
+            setSelectedCategory(null);
+          }}
+        >
+          all
+        </button>
+        <button
+          onClick={() => {
+            setSelectedCategory("work");
+          }}
+        >
+          work
+        </button>
+        <button
+          onClick={() => {
+            setSelectedCategory("personal");
+          }}
+        >
+          personal
+        </button>
         <div className="create-note">
           <input
             className="title"
