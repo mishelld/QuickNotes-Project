@@ -3,6 +3,8 @@ import "./CreateNote.css";
 import Notes from "./Notes";
 import Modal from "./Modal";
 import CategoryButtons from "./CategoryButtons";
+import NoteForm from "./NoteForm";
+
 function CreateNote() {
   const [text, setText] = useState("");
   const [title, setTitle] = useState("");
@@ -117,25 +119,16 @@ function CreateNote() {
             />
           </header>
 
-          <div className="create-note">
-            <input
-              className="title"
-              placeholder="Title"
-              onChange={(e) => setTitle(e.target.value)}
-            />
-            <textarea
-              placeholder="Your note..."
-              onChange={(e) => setText(e.target.value)}
-            />
-            <select value={category} onChange={handleCategory}>
-              <option value="">Select Category</option>
-              <option value="personal">Personal</option>
-              <option value="work">Work</option>
-            </select>
-            <button className="add-btn" onClick={handleAdd}>
-              Add
-            </button>
-          </div>
+          <NoteForm
+            title={title}
+            setTitle={setTitle}
+            text={text}
+            setText={setText}
+            category={category}
+            handleCategory={handleCategory}
+            handleSubmit={handleAdd}
+            submitLabel="Add"
+          />
         </div>
 
         <Notes

@@ -1,4 +1,6 @@
 import "./Modal.css";
+import NoteForm from "./NoteForm";
+
 import { use, useState } from "react";
 
 function Modal({ note, onClose, onUpdate }) {
@@ -8,38 +10,23 @@ function Modal({ note, onClose, onUpdate }) {
 
   return (
     <div className="modal-overlay">
-      <div className={`modal-note ${category}`}>
+      <div className={` ${category}`}>
         <header>
           <div className="date">{note.date}</div>
           <button className="dlt-btn" onClick={onClose}>
             X
           </button>
         </header>
-        <input
-          value={title}
-          placeholder="Title"
-          onChange={(e) => setTitle(e.target.value)}
+        <NoteForm
+          title={title}
+          setTitle={setTitle}
+          text={text}
+          setText={setText}
+          category={category}
+          handleCategory={(e) => setCategory(e.target.value)}
+          handleSubmit={() => onUpdate(note, { title, text, category })}
+          submitLabel="Update"
         />
-        <textarea
-          value={text}
-          placeholder="Your note..."
-          onChange={(e) => setText(e.target.value)}
-        ></textarea>
-        <select value={category} onChange={(e) => setCategory(e.target.value)}>
-          <option value="personal">Personal</option>
-          <option value="work">Work</option>
-        </select>
-        <button
-          onClick={() =>
-            onUpdate(note, {
-              title: title,
-              text: text,
-              category: category,
-            })
-          }
-        >
-          Update
-        </button>
       </div>
     </div>
   );
