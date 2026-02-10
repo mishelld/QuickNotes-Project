@@ -4,6 +4,7 @@ import Notes from "./Notes";
 import Modal from "./Modal";
 import CategoryButtons from "./CategoryButtons";
 import NoteForm from "./NoteForm";
+import SearchBar from "./SearchBar";
 
 function CreateNote() {
   const localNotes = localStorage.getItem("notes");
@@ -108,13 +109,8 @@ function CreateNote() {
       <div className="notes-container">
         <div className="note-wrapper">
           <header>
-            <input
-              value={search}
-              onChange={(e) => {
-                setSearch(e.target.value);
-              }}
-              placeholder="search notes..."
-            ></input>
+            <SearchBar search={search} setSearch={setSearch} />
+
             <CategoryButtons
               selectedCategory={selectedCategory}
               setSelectedCategory={setSelectedCategory}
