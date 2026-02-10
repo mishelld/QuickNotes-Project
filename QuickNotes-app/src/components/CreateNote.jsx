@@ -2,6 +2,7 @@ import { use, useEffect, useState } from "react";
 import "./CreateNote.css";
 import Notes from "./Notes";
 import Modal from "./Modal";
+import CategoryButtons from "./CategoryButtons";
 function CreateNote() {
   const [text, setText] = useState("");
   const [title, setTitle] = useState("");
@@ -108,27 +109,10 @@ function CreateNote() {
           }}
           placeholder="search notes..."
         ></input>
-        <button
-          onClick={() => {
-            setSelectedCategory(null);
-          }}
-        >
-          all
-        </button>
-        <button
-          onClick={() => {
-            setSelectedCategory("work");
-          }}
-        >
-          work
-        </button>
-        <button
-          onClick={() => {
-            setSelectedCategory("personal");
-          }}
-        >
-          personal
-        </button>
+        <CategoryButtons
+          selectedCategory={selectedCategory}
+          setSelectedCategory={setSelectedCategory}
+        />
         <div className="create-note">
           <input
             className="title"
