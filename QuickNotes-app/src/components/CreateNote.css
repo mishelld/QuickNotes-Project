@@ -14,12 +14,17 @@ body {
 }
 .notes-container header {
   display: flex;
+  margin-bottom: 10px;
 }
 .notes-container .note-wrapper {
   margin: 0 auto;
   max-width: 1200px;
 }
-
+.notes-container .create-note select {
+  width: 100%;
+  background-color: transparent;
+  border: none;
+}
 .create-note {
   display: flex;
   flex-direction: column;

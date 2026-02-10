@@ -128,7 +128,7 @@ function CreateNote() {
               onChange={(e) => setText(e.target.value)}
             />
             <select value={category} onChange={handleCategory}>
-              <option value="">-- Select --</option>
+              <option value="">Select Category</option>
               <option value="personal">Personal</option>
               <option value="work">Work</option>
             </select>
